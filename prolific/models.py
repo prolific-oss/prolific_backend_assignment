@@ -1,6 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.db import models
 from prolific import constants
+from prolific.exceptions import ParticipantBlockedError
 
 
 class Study(models.Model):
@@ -23,6 +24,16 @@ class Submission(models.Model):
     status = models.CharField(choices=constants.STATUSES, default=constants.STATUS_ACTIVE, max_length=20)
     started_at = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, default=None)
+
+    @classmethod
+    def start(cls, **kwargs):
+        if Submission.objects.filter(
+                user_id=kwargs["user_id"],
+                started_at__gte=datetime.now() - timedelta(seconds=10)
+        ).count() > 0:
+            raise ParticipantBlockedError()
+
+        return Submission.objects.create(**kwargs)
 
     def complete(self):
         self.status = constants.STATUS_COMPLETED

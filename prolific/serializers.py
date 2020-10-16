@@ -36,4 +36,4 @@ class SubmissionSerializer(serializers.Serializer):
         """
         Create and return a new `Submission` instance, given the validated data.
         """
-        return Submission.objects.create(**validated_data)
+        return Submission.start(**validated_data)
