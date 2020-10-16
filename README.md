@@ -158,7 +158,7 @@ Creates a new submission
 >**user_id**: *int* Owning user of the submission
 #### Examples
 ```
->>curl -XPOST 'http://localhost:8000/submissionss/' -d "study_id=1&user_id=2"
+>>curl -XPOST 'http://localhost:8000/submissions/' -d "study_id=1&user_id=2"
 
 HTTP 201 Created
 {
@@ -168,5 +168,24 @@ HTTP 201 Created
     "created_at": "2019-11-27T17:42:14.518398Z"
     "completed_at": null,
     "status": "ACTIVE"
+}
+```
+### POST /submissions/<int: submission_id>/
+#### Description
+Updates an existing submission
+#### Parameters
+>**action**: *str* The update action to perform
+#### Examples
+```
+>>curl -XPOST 'http://localhost:8000/submissions/3' -d "action=complete"
+
+HTTP 200 OK
+{
+    "id": 3,
+    "study_id": 3,
+    "user_id": 1,
+    "created_at": "2019-11-27T17:42:14.518398Z"
+    "completed_at": "2019-11-28T11:21:18.183351Z",
+    "status": "COMPLETED_AT"
 }
 ```
