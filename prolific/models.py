@@ -11,7 +11,7 @@ class Study(models.Model):
 
     @property
     def status (self):
-        if Submission.objects.filter(study=self).count() == self.total_places:
+        if Submission.objects.filter(study=self, status=constants.STATUS_COMPLETED).count() == self.total_places:
             return constants.STATUS_COMPLETED
         return constants.STATUS_ACTIVE
 

@@ -28,7 +28,7 @@ python manage.py test
 
 Initialise database
 ```
-python manage.py makemigrations
+python manage.py makemigrations prolific
 python manage.py migrate
 ```
 

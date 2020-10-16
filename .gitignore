@@ -1,0 +1,5 @@
+.idea/
+env/
+prolific/migrations/
+*.sqlite3
+**/__pycache__/
