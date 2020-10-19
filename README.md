@@ -5,12 +5,12 @@ It has been found in production that, in some cases, participants are able to cr
 
 - Identify the cause of this bug, and write code to fix it
 - Write unit tests to cover this case, and ensure all tests are passing
-- Extend the API to allow the study and submission lists to be filtered for a specific user
+- Extend the API to allow the submission list to be filtered for a specific user
 - Review the existing code and suggest how it might be refactored
 
 # Running the API
 
-Install python3
+Install the latest version of python3
 
 Clone and navigate to the repository
 
