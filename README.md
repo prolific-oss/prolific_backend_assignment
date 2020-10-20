@@ -1,12 +1,17 @@
 # Task
-This repo has a basic API implementation which allows the creation and storing of data about studies, and submissions to those studies.
-A study has a set number of available places, once this number of submissions has been received the study should be completed and no further submissions allowed.
-It has been found in production that, in some cases, participants are able to create submissions even though the study is already full.
-
-- Identify the cause of this bug, and write code to fix it
+This repo has a basic API implementation which allows the creation and storing of data about studies, and submissions to those studies.<br>
+A study has a set number of available places, once this number of submissions has been received the study should be completed and no further submissions allowed.<br><br>
+The support team have recently received the following complaint from a researcher:<br>
+"I set my study to have 100 available places, but I've received 103 submissions. I can't afford to pay for all of these submissions."
+<br>
+- Get the API set up and running
+- Identify the cause of the above bug, and write code to fix it
 - Write unit tests to cover this case, and ensure all tests are passing
+
+For the next part of the assignment, we would like you to: 
+
 - Extend the API to allow the submission list to be filtered for a specific user
-- Review the existing code and suggest how it might be refactored
+- Perform a code review for the open pull request and offer comments for how it could be improved. Additionally, if you have any comments on the rest of the codebase and how you would refactor/improve it if you had the chance, please offer them too!
 
 # Running the API
 
