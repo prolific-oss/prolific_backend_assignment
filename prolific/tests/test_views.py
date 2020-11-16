@@ -98,4 +98,23 @@ class TestSubmissionUpdateView(APITestCase):
         response = self.client.post(url, data, format="json")
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(sub.status, constants.STATUS_COMPLETED)
+
+        result_status = response.json()["status"]
+        self.assertEqual(result_status, constants.STATUS_COMPLETED)
+
+    def test_available_places_limit(self):
+        total_places = 2
+        study = Study.objects.create(
+            name="test available places limit", total_places=total_places, user_id=1
+        )
+
+        url = reverse("submissions")
+        for user_id in range(2, total_places + 3):
+            data = {"study_id": study.id, "user_id": user_id}
+            self.client.post(url, data, format="json")
+
+        url = reverse("study_submission_list", kwargs={"study_id": study.id})
+        response = self.client.get(url, None, format="json")
+
+        submissions_count = len(response.json())
+        assert submissions_count == total_places

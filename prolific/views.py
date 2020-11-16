@@ -52,3 +52,11 @@ class SubmissionUpdateView(generics.GenericAPIView):
             serializer = SubmissionSerializer(sub)
             return Response(serializer.data, status=status.HTTP_200_OK)
         raise InvalidActionError()
+
+
+# For submissions per user I would greate a new GET endpoint
+# that filters submissions like:
+# submissions = Submission.objects.filter(user_id=user_id)
+# Then I would could extract the following lines to their own function:
+#        serializer = SubmissionSerializer(submissions, many=True)
+#        return Response(serializer.data)

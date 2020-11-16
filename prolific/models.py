@@ -10,8 +10,9 @@ class Study(models.Model):
     user_id = models.IntegerField()
 
     @property
-    def status (self):
-        if Submission.objects.filter(study=self, status=constants.STATUS_COMPLETED).count() == self.total_places:
+    def status(self):
+        # Study is considered completed when all its submissions are completed
+        if Submission.objects.filter(study=self).count() == self.total_places:
             return constants.STATUS_COMPLETED
         return constants.STATUS_ACTIVE
 
